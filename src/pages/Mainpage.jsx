@@ -4,7 +4,7 @@ import Leaderboard from '../components/Leaderboard'
 import Navbar from '../components/Navbar'
 const Mainpage = ({API}) => {
   return (
-    <div>
+    <div className='bg-blue-400'>
       {/* <AdminPage /> */}
       <Navbar />
       <Leaderboard API={API} />
