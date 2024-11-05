@@ -5,27 +5,99 @@ const mottoItems = [
   {
     id: 'mechanical',
     icon: BarChart3,
-    title: 'Mechanical Analysis',
-    description: 'Analyzes 13 mechanical parameters of all dumpers, assigns threshold values and weightage, and scores operators based on each parameter.'
+    title: 'Mechanical Parameters ',
+    description: 'HSD Consumption (Fuel Consumption)/Engine 1 Fuel Rate: Efficient fuel usage can indicate good driving habits, including smooth acceleration and deceleration, and minimizing idle times.'
   },
   {
     id: 'behavioural',
     icon: Users,
-    title: 'Behavioural Analysis',
-    description: 'Evaluates 4 behavioural parameters, assigns scores based on weightage to assess operator performance.'
+    title: 'Mechanical Parameters',
+    description: 'Average of Front Brake and Rear Brake Pressure: Proper use of brakes, with balanced pressure, reflects careful and controlled driving. Excessive brake use could indicate aggressive driving, while low pressure might reflect underuse, risking safety.'
   },
   {
     id: 'comparison',
     icon: GitCompare,
-    title: 'Operator Comparison',
-    description: 'Compares operators and suggests necessary actions for improvement.'
+    title: 'Mechanical Parameters',
+    description: 'Wheel-Based Speed 30 km/h: Monitoring whether the operator maintains appropriate speed limits for safety. Excessive speeding can reduce vehicle life and increase accident risks.'
   },
   {
     id: 'ranking',
     icon: Trophy,
-    title: 'Ranking System',
-    description: 'Processes data through an algorithm, ranking operators and identifying the most efficient ones.'
-  }
+    title: 'Mechanical Parameters',
+    description: 'Foot Brake Position: Indicates how often and how hard the operator is applying the brake. Excessive brake use could indicate poor driving habits like hard stops or reckless driving, while minimal use may indicate efficient driving.'
+  },
+  {
+    id: 'ranking',
+    icon: Trophy,
+    title: 'Mechanical Parameters',
+    description: 'Retarder Position Proper use of the retarder for slowing down (instead of brakes) indicates good driving practices, helping to avoid wear on the brake system and ensuring controlled descents on steep terrain.'
+  },
+  {
+    id: 'ranking',
+    icon: Trophy,
+    title: 'Mechanical Parameters',
+    description: 'Retarder Oil Temperature (Front/Rear): High retarder oil temperature could indicate over-reliance on the retarder, which may be linked to improper downhill driving techniques.'
+  },
+  {
+    id: 'ranking',
+    icon: Trophy,
+    title: 'Mechanical Parameters',
+    description: 'Engine 1 Accelerator Pedal Position: Sudden, aggressive acceleration could suggest reckless driving, while smooth, moderate pedal use could indicate good driving behavior.'
+  },
+  {
+    id: 'ranking',
+    icon: Trophy,
+    title: 'Mechanical Parameters',
+    description: 'High Resolution Total Vehicle Distance: The total distance driven combined with other parameters (eg, fuel efficiency, brake usage) can give insights into the operator is overall driving habits over time.'
+  },
+  {
+    id: 'ranking',
+    icon: Trophy,
+    title: 'Mechanical Parameters',
+    description: 'Engine 1 Speed (RPM): High RPMs may indicate that the operator frequently pushes the engine hard, which could affect fuel efficiency and engine went Lower RPMs at optimal power output reflect good driving behavior.'
+  },
+  {
+    id: 'ranking',
+    icon: Trophy,
+    title: 'Mechanical Parameters',
+    description: 'Coolant Temp High > 100°C: If the operator consistently causes the engine to overbeat, this indicates poor driving behavior (eg, pushing the vehicle too hard, not observing engine health warnings).'
+  },
+  {
+    id: 'ranking',
+    icon: Trophy,
+    title: 'Mechanical Parameters',
+    description: 'Engine 1 Oil Pressure & Engine 1 Oil Temperature: These parameters, while more related to engine health, can indirectly indicate how well the operator is handling the vehicie. Overuse or poor driving habits may reflect in abnormal oil pressure or temperature values.'
+  },
+  {
+    id: 'ranking',
+    icon: Trophy,
+    title: 'Mechanical Parameters',
+    description: 'Mean Exhaust Temperature: Consistently high exhaust temperatures could indicate aggressive driving or overloading, affecting engine performance. Operators maintaining optimal temperatures could be more efficient'
+  },
+  {
+    id: 'behavioural',
+    icon: Users,
+    title: 'Behavioural Parameters',
+    description: 'TKPH (Tonnage kilometer Per Hour): (Total Tonnage Handled "Total Lead)/Total Run Hour (Only Hauling Time Empty Time).'
+  },
+  {
+    id: 'behavioural',
+    icon: Users,
+    title: 'Behavioural Parameters',
+    description: 'Earty Stop: Refers to the operator stopping the dumper before designated shift end timing, indicates inefficiency and poor time management.'
+  },
+  {
+    id: 'behavioural',
+    icon: Users,
+    title: 'Behavioural Parameters',
+    description: 'Late Start: Refers to delays in starting the dumper after designated shift start timing, indicates lack of punctuality and inefficiency'
+  },
+  {
+    id: 'behavioural',
+    icon: Users,
+    title: 'Behavioural Parameters',
+    description: 'Stretched Tea Break: Refers to operator extending breaks beyond the allotted time leading to delays in operations.'
+  },
 ]
 
 export default function Motto() {
@@ -48,7 +120,7 @@ export default function Motto() {
     <div className="min-h-[60vh] bg-blue-50 dark:bg-blue-950 p-6 flex items-center justify-center">
       <div className="max-w-3xl w-full bg-white dark:bg-blue-900 text-blue-900 dark:text-blue-50 rounded-xl shadow-lg overflow-hidden">
         <div className="p-5 border-b border-blue-200 dark:border-blue-700 text-center">
-          <h2 className="text-2xl font-bold text-blue-600 dark:text-blue-300">Our Motto</h2>
+          <h2 className="text-2xl font-bold text-blue-600 dark:text-blue-300">About the Parameters</h2>
           <p className="text-blue-500 dark:text-blue-200 mt-1">
             Comprehensive analysis for optimal performance
           </p>
