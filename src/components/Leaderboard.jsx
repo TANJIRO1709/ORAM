@@ -19,8 +19,8 @@ const Leaderboard = ({ API }) => {
   }, []);
 
   return (
-    <div className="leaderboard max-w-6xl mx-auto my-8 p-4 px-4 py-4 rounded-lg shadow-lg bg-blue-500">
-      <h1 className="text-6xl font-bold text-white text-center mb-6">
+    <div className="leaderboard max-w-6xl mx-auto my-8 p-4 px-4 py-10 rounded-lg shadow-lg bg-blue-500">
+      <h1 className="text-5xl font-bold text-white text-center mb-6">
         Leaderboard
       </h1>
 

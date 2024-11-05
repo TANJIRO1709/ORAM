@@ -47,24 +47,24 @@ function About() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6 text-center text-gray-900 dark:text-white">
+    <div className="container mx-auto px-4 py-16 " id='about'>
+      <h1 className="text-4xl font-extrabold mb-8 text-center text-gray-900 dark:text-black ">
         About ORAM
       </h1>
-      <p className="text-lg mb-8 text-center max-w-3xl mx-auto text-gray-700 dark:text-gray-300">
+      <p className="text-lg mb-12 text-center max-w-3xl mx-auto text-gray-700 dark:text-black">
         The Operator Ranking Analysis Model processes large datasets and delivers actionable insights through data visualizations and graphs. By analyzing 17 key parameters, it provides a detailed evaluation of operator performance, offering practical suggestions for improvement.
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {cards.map((card, index) => (
           <div
             key={index}
-            className="relative overflow-hidden bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 hover:shadow-xl transition-all duration-300"
+            className="relative overflow-hidden bg-white dark:bg-gray-800 rounded-xl shadow-md p-8 hover:shadow-lg transition-shadow duration-300"
           >
             <div className="relative z-10">
-              <h2 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
+              <h2 className="text-2xl font-semibold mb-3 text-gray-900 dark:text-white">
                 {card.title}
               </h2>
-              <p className="text-gray-600 dark:text-gray-300">
+              <p className="text-gray-600 dark:text-gray-400">
                 {card.description}
               </p>
             </div>

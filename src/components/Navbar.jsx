@@ -1,24 +1,47 @@
 // src/components/Navbar.js
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
+  // Detect scroll to change navbar opacity
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToAbout = () => {
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
-    <nav className="bg-blue-300 shadow-lg dark:bg-gray-900">
+    <nav className={`fixed top-0 left-0 w-full z-50 bg-blue-300 dark:bg-gray-900 shadow-lg transition-opacity duration-300 ${isScrolled ? 'opacity-90' : 'opacity-100'}`}>
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between py-4">
         {/* Logo / Brand Name */}
         <Link to="/" className="text-3xl font-extrabold text-white">
-         WELCOME TO ORAM
+          WELCOME TO ORAM
         </Link>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-6">
+          <button
+            onClick={scrollToAbout}
+            className="px-4 py-2 text-lg font-semibold text-white rounded-lg bg-blue-600 hover:bg-blue-700 transition duration-300 ease-in-out"
+          >
+            About Us
+          </button>
           <Link
             to="/user/signin"
             className="px-4 py-2 text-lg font-semibold text-white rounded-lg bg-blue-600 hover:bg-blue-700 transition duration-300 ease-in-out"
@@ -53,10 +76,19 @@ const Navbar = () => {
       {/* Mobile Links */}
       {isOpen && (
         <div className="md:hidden bg-white dark:bg-gray-900 px-4 pb-4">
+          <button
+            onClick={() => {
+              scrollToAbout();
+              toggleMenu();
+            }}
+            className="block py-2 mt-2 text-lg font-semibold dark:text-gray-300 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition duration-300 ease-in-out"
+          >
+            About Us
+          </button>
           <Link
             to="/user/signin"
             onClick={toggleMenu}
-            className="block py-2 mt-2 text-lg font-semibold text-gray-700 dark:text-gray-300 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition duration-300 ease-in-out"
+            className="block py-2 mt-2 text-lg font-semibold dark:text-gray-300 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition duration-300 ease-in-out"
           >
             Admin Login
           </Link>

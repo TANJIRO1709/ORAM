@@ -1,27 +1,10 @@
-import {  Linkedin, Twitter } from "lucide-react";
+import { Linkedin, Twitter } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="w-full border-t bg-white sm:items-center">
+    <footer className="w-full border-t bg-white">
       <div className="container mx-auto px-6 py-10 md:px-8 lg:px-12">
-        <div className="grid gap-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 justify-items-center sm:justify-items-start">
-          <div className="space-y-4 text-center sm:text-left">
-            <img
-              src="/logo.png" // Update with your ORAM logo path
-              alt="ORAM Logo"
-              width={150}
-              height={80}
-              className="h-16 w-auto mx-auto sm:mx-0"
-            />
-            <div className="flex justify-center sm:justify-start space-x-3">
-              <a href="#" className="p-2 bg-gray-100 rounded-full hover:bg-gray-200" aria-label="LinkedIn">
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a href="#" className="p-2 bg-gray-100 rounded-full hover:bg-gray-200" aria-label="Twitter">
-                <Twitter className="w-5 h-5" />
-              </a>
-            </div>
-          </div>
+        <div className="grid gap-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 justify-items-center sm:justify-items-start">
 
           <div className="space-y-4 text-center sm:text-left">
             <h3 className="font-semibold text-gray-700">Company</h3>
