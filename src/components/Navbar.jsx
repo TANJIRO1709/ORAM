@@ -10,7 +10,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 shadow-lg dark:bg-gray-900">
+    <nav className="bg-blue-300 shadow-lg dark:bg-gray-900">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between py-4">
         {/* Logo / Brand Name */}
         <Link to="/" className="text-3xl font-extrabold text-white">

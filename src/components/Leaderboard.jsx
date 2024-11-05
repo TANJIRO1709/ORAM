@@ -19,8 +19,8 @@ const Leaderboard = ({ API }) => {
   }, []);
 
   return (
-    <div className="leaderboard max-w-6xl mx-auto my-8 p-4 px-4 py-4 rounded-lg shadow-lg bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
-      <h1 className="text-4xl font-bold text-white text-center mb-6">
+    <div className="leaderboard max-w-6xl mx-auto my-8 p-4 px-4 py-4 rounded-lg shadow-lg bg-blue-500">
+      <h1 className="text-6xl font-bold text-white text-center mb-6">
         Leaderboard
       </h1>
 
@@ -28,13 +28,13 @@ const Leaderboard = ({ API }) => {
         <table className="w-full text-sm text-left text-gray-100 dark:text-gray-300">
           <thead className="text-md text-gray-800 uppercase bg-gray-200 dark:bg-gray-800 dark:text-gray-300">
             <tr>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-6 py-3 text-xl font-bold">
                 Rank
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-6 py-3 text-xl font-bold">
                 Name
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-6 py-3 text-xl font-bold">
                 Score
               </th>
             </tr>
