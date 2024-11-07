@@ -282,13 +282,14 @@ const AdminPage = ({ API }) => {
       );
 
   return (
-    <div className="bg-gradient-to-b from-blue-400 to-white">
     <div className="">
-      <h1 class="mb-4 text-3xl font-extrabold  text-gray-900 dark:text-white md:text-5xl lg:text-6xl text-c">
-        <span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">
-          Admin Page
-        </span>
-      </h1>
+    <div className="">
+     <h1 class="text-3xl font-extrabold text-gray-800 mb-4 md:text-5xl lg:text-6xl">
+  <span class="text-blue-600 shadow-lg shadow-blue-200 px-4 py-2 rounded-lg">
+    Admin Page
+  </span>
+</h1>
+
 
 
       <div className="flex flex-wrap ">
