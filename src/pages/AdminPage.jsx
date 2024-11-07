@@ -636,15 +636,15 @@ const AdminPage = ({ API }) => {
 
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-      <thead class="text-md text-gray-700 uppercase dark:text-gray-400 ">
+      <thead class="text-md text-black font-bold uppercase dark:text-gray-400 ">
         <tr>
-          <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+          <th scope="col" className="px-6 py-3 text-white dark:bg-gray-800 text-3xl">
             Serial Number
           </th>
-          <th scope="col" class="px-6 py-4">
+          <th scope="col" class="px-6 py-4  text-black font-bold text-3xl">
             Name
           </th>
-          <th scope="col" class="px-6 py-4">
+          <th scope="col" class="px-6 py-4 text-black font-bold text-3xl">
             Score
           </th>
         </tr>
@@ -658,8 +658,8 @@ const AdminPage = ({ API }) => {
             <td className="px-6 py-4 bg-gray-50 dark:bg-gray-800">
               {index + 1}
             </td>{" "}
-            <td className="px-6 py-4">{entry.name}</td>
-            <td className="px-6 py-4">{entry.score}</td>
+            <td className="px-6 py-4 text-black font-bold text-2xl">{entry.name}</td>
+            <td className="px-6 py-4 text-black font-bold text-2xl">{entry.score}</td>
           </tr>
         ))}
       </tbody>
