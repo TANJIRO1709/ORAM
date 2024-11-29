@@ -280,32 +280,6 @@ const AdminPage = ({ API }) => {
           ))}
         </div>
       );
-      const data= combinedLeaderboard.response.data
-      const uniqueEntries = {};
-      data.forEach((entry) => {
-        if (
-          entry.name &&
-          typeof entry.score === "number"
-        ) {
-          const normalizedName = entry.name.trim().toLowerCase();
-      
-          if (
-            !uniqueEntries[normalizedName] || 
-            entry.score > uniqueEntries[normalizedName].score
-          ) {
-            uniqueEntries[normalizedName] = entry;
-          }
-        }
-      });
-      const filteredData = Object.values(uniqueEntries);
-      const sortedData = filteredData.sort((a, b) => b.score - a.score);
-      const totalEntries = sortedData.length;
-
-      const dataWithPercentiles = sortedData.map((entry, index) => ({
-        ...entry,
-        percentile: ((totalEntries - index) / totalEntries) * 100,
-      }));
-      setCombinedLeaderboard(dataWithPercentiles);
 
   return (
     <div className="">
@@ -730,7 +704,7 @@ const AdminPage = ({ API }) => {
             {/* <td className="px-6 py-4 bg-gray-50 dark:bg-gray-800">
               {entry.truckName}
             </td> */}
-            <td className="px-6 py-4">{entry.percentile}</td>
+            <td className="px-6 py-4">{entry.score}</td>
           </tr>
         ))}
       </tbody>
