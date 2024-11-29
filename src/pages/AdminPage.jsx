@@ -732,7 +732,7 @@ const AdminPage = ({ API }) => {
               {index + 1}
             </td>{" "}
             <td className="px-6 py-4 text-slate-950 font-bold text-2xl">{entry.name}</td>
-            <td className="px-6 py-4 text-slate-950 font-bold text-2xl">{(entry.score)}</td>
+            <td className="px-6 py-4 text-slate-950 font-bold text-2xl">{(entry.percentile)}</td>
           </tr>
         ))}
       </tbody>
@@ -751,7 +751,7 @@ const AdminPage = ({ API }) => {
 
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left rtl:text-right text-slate-950 dark:text-slate-950">
-      <thead class="text-md text-gray-700 uppercase dark:text-gray-400 ">
+      <thead class="text-md text-black uppercase dark:text-gray-400 ">
         <tr>
           <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
             Serial Number
