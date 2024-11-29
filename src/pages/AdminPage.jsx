@@ -190,7 +190,7 @@ const AdminPage = ({ API }) => {
   const fetchBehaviouralDumperLeaderboard = async () => {
     try {
       // Fetch data from the API
-      const response = await axios.get(API + "api/behavioral");
+      const response = await axios.get(`${API}api/behavioral`);
       const data = response.data;
   
       // Validate that data is an array
@@ -227,8 +227,9 @@ const AdminPage = ({ API }) => {
   
       // Update state with the processed leaderboard data
       setBehaviouralDumperLeaderboard(dataWithPercentiles);
-      await behaviouralDumperLeaderboard()
   
+      // Ensure this function is properly defined or imported
+      await behaviouralDumperLeaderboard();
     } catch (error) {
       console.error("Error fetching leaderboard:", error.message || error);
     }
@@ -715,10 +716,10 @@ const AdminPage = ({ API }) => {
           <th scope="col" className="px-6 py-3 text-white dark:bg-gray-800 text-3xl">
             Serial Number
           </th>
-          <th scope="col" class="px-6 py-4  text-black font-bold text-3xl">
+          <th scope="col" class="px-6 py-4  text-black font-bold text-3xl dark:text-black">
             Name
           </th>
-          <th scope="col" class="px-6 py-4 text-black font-bold text-3xl">
+          <th scope="col" class="px-6 py-4 text-black font-bold text-3xl dark:text-black">
             Percentile
           </th>
         </tr>
