@@ -190,7 +190,42 @@ const AdminPage = ({ API }) => {
   const fetchBehaviouralDumperLeaderboard = async () => {
     try {
       const response = await axios.get(API + "api/behavioral");
-      setBehaviouralDumperLeaderboard(response.data.leaderboard);
+      const data = response.data;
+  
+      // Validate that data is an array
+      if (!Array.isArray(data)) {
+        console.error("Invalid data format: expected an array.");
+        return;
+      }
+  
+      // Normalize and filter data
+      const uniqueEntries = {};
+      data.forEach((entry) => {
+        if (entry.name && typeof entry.score === "number") {
+          const normalizedName = entry.name.trim().toLowerCase();
+  
+          // Store the highest score for each unique name
+          if (
+            !uniqueEntries[normalizedName] ||
+            entry.score > uniqueEntries[normalizedName].score
+          ) {
+            uniqueEntries[normalizedName] = entry;
+          }
+        }
+      });
+  
+      // Sort by score and calculate percentiles
+      const filteredData = Object.values(uniqueEntries);
+      const sortedData = filteredData.sort((a, b) => b.score - a.score);
+      const totalEntries = sortedData.length;
+  
+      const dataWithPercentiles = sortedData.map((entry, index) => ({
+        ...entry,
+        percentile: ((totalEntries - index) / totalEntries) * 100,
+      }));
+  
+      // Update state with the processed leaderboard data
+      setBehaviouralDumperLeaderboard(dataWithPercentiles);
       await fetchBehaviouralDumperLeaderboard();
     } catch (error) {
       console.error("Error fetching leaderboard:", error);
@@ -681,7 +716,7 @@ const AdminPage = ({ API }) => {
             Name
           </th>
           <th scope="col" class="px-6 py-4 text-black font-bold text-3xl">
-            Score
+            Percentile
           </th>
         </tr>
       </thead>
@@ -694,8 +729,8 @@ const AdminPage = ({ API }) => {
             <td className="px-6 py-4 bg-gray-50 dark:bg-gray-800">
               {index + 1}
             </td>{" "}
-            <td className="px-6 py-4 text-black font-bold text-2xl">{entry.name}</td>
-            <td className="px-6 py-4 text-black font-bold text-2xl">{(entry.score)}</td>
+            <td className="px-6 py-4 text-slate-950 font-bold text-2xl">{entry.name}</td>
+            <td className="px-6 py-4 text-slate-950 font-bold text-2xl">{(entry.score)}</td>
           </tr>
         ))}
       </tbody>
@@ -723,7 +758,7 @@ const AdminPage = ({ API }) => {
             Name
           </th>
           <th scope="col" class="px-6 py-4">
-            Score
+            Percentile
           </th>
         </tr>
       </thead>
@@ -731,9 +766,9 @@ const AdminPage = ({ API }) => {
         {combinedLeaderboard.map((entry, index) => (
           <tr
             key={index}
-            className="border-b border-gray-200 dark:border-gray-700 text-sm"
+            className="border-b border-gray-200 dark:border-gray-700 text-sm text-slate-950"
           >
-            <td className="px-6 py-4 bg-gray-50 dark:bg-gray-800">
+            <td className="px-6 py-4 bg-gray-50 dark:bg-gray-800 text-slate-950">
               {index + 1}
             </td>{" "}
             <td className="px-6 py-4">{entry.name}</td>
