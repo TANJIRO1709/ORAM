@@ -227,6 +227,7 @@ const AdminPage = ({ API }) => {
   
       // Update state with the processed leaderboard data
       setBehaviouralDumperLeaderboard(dataWithPercentiles);
+      await behaviouralDumperLeaderboard()
   
     } catch (error) {
       console.error("Error fetching leaderboard:", error.message || error);
@@ -751,7 +752,7 @@ const AdminPage = ({ API }) => {
 
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left rtl:text-right text-slate-950 dark:text-slate-950">
-      <thead class="text-md text-black uppercase dark:text-gray-400 ">
+      <thead class="text-md text-black uppercase dark:text-black ">
         <tr>
           <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
             Serial Number
