@@ -189,6 +189,7 @@ const AdminPage = ({ API }) => {
 
   const fetchBehaviouralDumperLeaderboard = async () => {
     try {
+      // Fetch data from the API
       const response = await axios.get(API + "api/behavioral");
       const data = response.data;
   
@@ -226,11 +227,12 @@ const AdminPage = ({ API }) => {
   
       // Update state with the processed leaderboard data
       setBehaviouralDumperLeaderboard(dataWithPercentiles);
-      await fetchBehaviouralDumperLeaderboard();
+  
     } catch (error) {
-      console.error("Error fetching leaderboard:", error);
+      console.error("Error fetching leaderboard:", error.message || error);
     }
   };
+  
 
   useEffect(() => {
     fetchBehaviouralDumperLeaderboard();
@@ -748,7 +750,7 @@ const AdminPage = ({ API }) => {
   </h1>
 
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <table class="w-full text-sm text-left rtl:text-right text-slate-950 dark:text-slate-950">
       <thead class="text-md text-gray-700 uppercase dark:text-gray-400 ">
         <tr>
           <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
