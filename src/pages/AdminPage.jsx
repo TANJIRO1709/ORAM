@@ -3,6 +3,7 @@ import * as XLSX from "xlsx";
 import axios from "axios";
 import { AutoSizer, List } from "react-virtualized";
 import "react-virtualized/styles.css";
+import { data } from "autoprefixer";
 
 const AdminPage = ({ API }) => {
   const [openTab, setOpenTab] = React.useState(1);
@@ -203,7 +204,36 @@ const AdminPage = ({ API }) => {
   const fetchCombinedLeaderboard = async () => {
     try {
       const response = await axios.get(API + "api/combinedleaderboard");
-      setCombinedLeaderboard(response.data);
+      
+      if (!Array.isArray(data)) {
+        console.error("Invalid data format: expected an array.");
+        return;
+      }
+      const uniqueEntries = {};
+      data.forEach((entry) => {
+        if (
+          entry.name &&
+          typeof entry.score === "number"
+        ) {
+          const normalizedName = entry.name.trim().toLowerCase();
+      
+          if (
+            !uniqueEntries[normalizedName] || 
+            entry.score > uniqueEntries[normalizedName].score
+          ) {
+            uniqueEntries[normalizedName] = entry;
+          }
+        }
+      });
+      const filteredData = Object.values(uniqueEntries);
+      const sortedData = filteredData.sort((a, b) => b.score - a.score);
+      const totalEntries = sortedData.length;
+
+      const dataWithPercentiles = sortedData.map((entry, index) => ({
+        ...entry,
+        percentile: ((totalEntries - index) / totalEntries) * 100,
+      }));
+      setCombinedLeaderboard(dataWithPercentiles);
       await fetchCombinedLeaderboard();
     } catch (error) {
       console.error("Error fetching leaderboard:", error);
@@ -659,7 +689,7 @@ const AdminPage = ({ API }) => {
               {index + 1}
             </td>{" "}
             <td className="px-6 py-4 text-black font-bold text-2xl">{entry.name}</td>
-            <td className="px-6 py-4 text-black font-bold text-2xl">{entry.score}</td>
+            <td className="px-6 py-4 text-black font-bold text-2xl">{(entry.score)}</td>
           </tr>
         ))}
       </tbody>
@@ -704,7 +734,7 @@ const AdminPage = ({ API }) => {
             {/* <td className="px-6 py-4 bg-gray-50 dark:bg-gray-800">
               {entry.truckName}
             </td> */}
-            <td className="px-6 py-4">{entry.score}</td>
+            <td className="px-6 py-4">{entry.percentile}%</td>
           </tr>
         ))}
       </tbody>
