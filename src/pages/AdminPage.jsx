@@ -204,41 +204,47 @@ const AdminPage = ({ API }) => {
   const fetchCombinedLeaderboard = async () => {
     try {
       const response = await axios.get(API + "api/combinedleaderboard");
-      
+      const data = response.data;
+  
+      // Validate that data is an array
       if (!Array.isArray(data)) {
         console.error("Invalid data format: expected an array.");
         return;
       }
+  
+      // Normalize and filter data
       const uniqueEntries = {};
       data.forEach((entry) => {
-        if (
-          entry.name &&
-          typeof entry.score === "number"
-        ) {
+        if (entry.name && typeof entry.score === "number") {
           const normalizedName = entry.name.trim().toLowerCase();
-      
+  
+          // Store the highest score for each unique name
           if (
-            !uniqueEntries[normalizedName] || 
+            !uniqueEntries[normalizedName] ||
             entry.score > uniqueEntries[normalizedName].score
           ) {
             uniqueEntries[normalizedName] = entry;
           }
         }
       });
+  
+      // Sort by score and calculate percentiles
       const filteredData = Object.values(uniqueEntries);
       const sortedData = filteredData.sort((a, b) => b.score - a.score);
       const totalEntries = sortedData.length;
-
+  
       const dataWithPercentiles = sortedData.map((entry, index) => ({
         ...entry,
         percentile: ((totalEntries - index) / totalEntries) * 100,
       }));
+  
+      // Update state with the processed leaderboard data
       setCombinedLeaderboard(dataWithPercentiles);
-      await fetchCombinedLeaderboard();
     } catch (error) {
       console.error("Error fetching leaderboard:", error);
     }
   };
+  
 
   useEffect(() => {
     fetchCombinedLeaderboard();
