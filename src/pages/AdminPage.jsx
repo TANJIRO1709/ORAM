@@ -753,7 +753,7 @@ const AdminPage = ({ API }) => {
     <table class="w-full text-sm text-left rtl:text-right text-slate-950 dark:text-slate-950">
       <thead class="text-md text-black uppercase dark:text-black ">
         <tr>
-          <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+          <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800 text-white">
             Serial Number
           </th>
           <th scope="col" class="px-6 py-4 text-black">
@@ -770,7 +770,7 @@ const AdminPage = ({ API }) => {
             key={index}
             className="border-b border-gray-200 dark:border-gray-700 text-sm text-slate-950"
           >
-            <td className="px-6 py-4 bg-gray-50 dark:bg-gray-800 text-slate-950">
+            <td className="px-6 py-4 bg-gray-50 dark:bg-gray-800 text-slate-950 dark:text-white">
               {index + 1}
             </td>{" "}
             <td className="px-6 py-4">{entry.name}</td>
