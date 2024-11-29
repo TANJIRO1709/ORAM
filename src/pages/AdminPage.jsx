@@ -731,9 +731,6 @@ const AdminPage = ({ API }) => {
               {index + 1}
             </td>{" "}
             <td className="px-6 py-4">{entry.name}</td>
-            {/* <td className="px-6 py-4 bg-gray-50 dark:bg-gray-800">
-              {entry.truckName}
-            </td> */}
             <td className="px-6 py-4">{entry.percentile}%</td>
           </tr>
         ))}
