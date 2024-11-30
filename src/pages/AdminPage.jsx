@@ -191,6 +191,8 @@ const AdminPage = ({ API }) => {
     try {
       // Fetch data from the API
       const response = await axios.get(API + "api/behavioral");
+      setBehaviouralDumperLeaderboard(response.data.leaderboard);
+
       const data = response.data;
   
       // Validate that data is an array
