@@ -243,8 +243,6 @@ const AdminPage = ({ API }) => {
     try {
       const response = await axios.get(API + "api/combinedleaderboard");
       const data = response.data;
-  
-      // Validate that data is an array
       if (!Array.isArray(data)) {
         console.error("Invalid data format: expected an array.");
         return;
