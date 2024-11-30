@@ -226,8 +226,7 @@ const AdminPage = ({ API }) => {
       }));
   
       // Update state with the processed leaderboard data
-      setBehaviouralDumperLeaderboard(response.data.leaderboard);
-      await fetchBehaviouralDumperLeaderboard();
+      setBehaviouralDumperLeaderboard(dataWithPercentiles);
     } catch (error) {
       console.error("Error fetching leaderboard:", error.message || error);
     }
